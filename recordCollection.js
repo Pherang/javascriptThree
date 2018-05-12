@@ -13,7 +13,11 @@ If prop is "tracks" but the album doesn't have a "tracks" property, create an em
 
 If prop is "tracks" and value isn't empty (""), push the value onto the end of the album's existing tracks array.
 
+
 If value is empty (""), delete the given prop property from the album. */
+
+
+// Setup
 var collection = {
     "2548": {
       "album": "Slippery When Wet",
@@ -44,17 +48,29 @@ var collectionCopy = JSON.parse(JSON.stringify(collection));
 
 // Only change code below this line
 function updateRecords(id, prop, value) {
-  
-  if (prop !== "tracks" && value !== "") {
-    console.log('updating property')
-    collectionCopy[id][prop] = value;  
+
+  if (prop && value === ""){
+    delete collectionCopy[id][prop]
+    return collectionCopy;
   }
-  
-  console.log(collectionCopy);
+  if (prop !== "tracks" && value !== "") {
+    collectionCopy[id][prop] = value;
+    return collectionCopy;
+  }
+  if (prop === "tracks") {
+    if (!collectionCopy[id].hasOwnProperty(prop)) {
+      collectionCopy[id].tracks = []
+      collectionCopy[id]['tracks'].push(value)
+      return collectionCopy;
+    } else {
+      collectionCopy[id]['tracks'].push(value)
+      return collectionCopy;
+    }
+  }
   return collectionCopy;
 }
 
 // Alter values below to test your code
-updateRecords(5439, "artist", "ABBA");
-
+console.log(updateRecords(2468, "tracks", "Free"))
+console.log('')
 
