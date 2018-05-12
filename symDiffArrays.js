@@ -11,17 +11,15 @@ function sym(args) {
     return acc.concat(currentVal)
   },[]
   )
-  
+  console.log('flattened array ', temp) 
   var symmDiff = temp.reduce( function (acc, currentVal, currentIndex, array) {
     //
-    // Add the current value if it's unique in the flattened array.
-    
-    debugger
-    console.log('Did we find a duplicate ', array.indexOf(currentVal, currentIndex) )
-    if (array.indexOf(currentVal, currentIndex) === -1){
-      return acc.concat(currentVal)
+    // If we find one value and then from that index find a second value, that means we have two values and it can't be unique
+    // to the set.
+    if (array.indexOf(currentVal) !== -1 && array.indexOf(currentVal, (array.indexOf(currentVal)+1)) !== -1) {
+        return acc
     }
-    return acc
+    return acc.concat(currentVal)
   },[]
   )
 
