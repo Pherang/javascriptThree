@@ -15,7 +15,6 @@ function sym(args) {
     
     tempArray2.push( 
       element.reduce( function (accumulator, currentValue, currentIndex, array) {
-        
         if (accumulator.indexOf(currentValue) === -1) {
           accumulator.push(currentValue)
         }
@@ -38,14 +37,6 @@ function sym(args) {
         }
       })
     }
-
-    // Need to remove duplicates from accumulator
-    var dirtyAcc = accumulator
-    dirtyAcc.forEach( function (element,index) {
-      if (accumulator.indexOf(element, (index+1)) !== -1) {
-        accumulator.splice( accumulator.indexOf(element), 1)
-      }  
-    })
 
     return accumulator
   },tempArray2[0]
