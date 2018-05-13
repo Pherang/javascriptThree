@@ -1,5 +1,6 @@
 // Function is supposed to find the symmetric difference of a set of arrays.
 // It could be two or more arrays passed to the function.
+// Note that the challenge treated duplicate numbers as invalid in a set of symmetrical difference numbers.
 
 function sym(args) {
   var symmDiff = [] 
@@ -45,6 +46,8 @@ function sym(args) {
 
 var doh = sym([1, 1, 2, 5],[2,2,3,5],[3,4,5,5])
 console.log(doh)
+var doh2 = sym([1, 1, 2, 3,4,4],[1,5,6])
+console.log(doh2)
 
 // var ok = sym([1, 2, 5], [2, 3, 5], [3, 4, 5])
 // console.log('ok is ',ok)
